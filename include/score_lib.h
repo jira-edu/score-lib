@@ -86,9 +86,9 @@ class Scorelib {
 
         
     private:
-        bool u1[8] = {0,0,0,0,0,0,0,0};
-        bool u2[8] = {0,0,0,0,0,0,0,0};
-        bool u3[8] = {0,0,0,0,0,0,0,0};
+        bool u1[8] = {1,1,1,1,1,1,1,1};
+        bool u2[8] = {1,1,1,1,1,1,1,1};
+        bool u3[8] = {1,1,1,1,1,1,1,1};
         bool chip_select_C = 0;
         bool chip_select_B = 0;
         bool chip_select_A = 0;
@@ -101,11 +101,15 @@ class Scorelib {
 
             for (int i=0; i<8; i++) {
                 digitalWrite(q_pin[i], u1[i]);  // control Q U1
+                Serial.print(u1[i]);
             } 
+            Serial.println("");
+            delay(100);
             // control chip select
             digitalWrite(select_pin[1], chip_select_A);
             digitalWrite(select_pin[2], chip_select_B);
             digitalWrite(select_pin[3], chip_select_C);
+            delay(100);
             //-----------------------------------------------------------
 
             // conntrol U2
@@ -115,11 +119,15 @@ class Scorelib {
 
             for (int i=0; i<8; i++) {
                 digitalWrite(q_pin[i], u2[i]);  // control Q U2
+                Serial.print(u2[i]);
             } 
+            Serial.println("");
+            delay(100);
             // control chip select
             digitalWrite(select_pin[1], chip_select_A);
             digitalWrite(select_pin[2], chip_select_B);
             digitalWrite(select_pin[3], chip_select_C);
+            delay(100);
             //-----------------------------------------------------------
 
             // conntrol U3
@@ -129,10 +137,14 @@ class Scorelib {
 
             for (int i=0; i<8; i++) {
                 digitalWrite(q_pin[i], u3[i]);  // control Q U3
+                Serial.print(u3[i]);
             } 
+            Serial.println("");
+            delay(100);
             // control chip select
             digitalWrite(select_pin[1], chip_select_A);
             digitalWrite(select_pin[2], chip_select_B);
             digitalWrite(select_pin[3], chip_select_C);
+            delay(100);
         }      
 };
