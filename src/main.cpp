@@ -7,18 +7,32 @@ bool test1[23] = {0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0};
 bool test2[23] = {1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1};
 bool test3[23] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,0,0,1,1,1};
 bool test4[23] = {1,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1};
+bool test8[23] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+
 void setup() {
   Serial.begin(9600);
-
-  scorelib.display(test0);
+  scorelib.display_digit_1(test0);
+  scorelib.display_digit_2(test0);
   delay(1000);
-  scorelib.display(test1);
+  scorelib.display_digit_2(test0);
   delay(1000);
-  scorelib.display(test2);
+  scorelib.display_digit_2(test1);
   delay(1000);
-  scorelib.display(test3);
+  scorelib.display_digit_2(test2);
   delay(1000);
-  scorelib.display(test4);
+  scorelib.display_digit_2(test3);
+  delay(1000);
+  scorelib.display_digit_2(test4);
+  delay(1000);
+  scorelib.display_digit_1(test1);
+  delay(1000);
+  scorelib.display_digit_1(test2);
+  delay(1000);
+  scorelib.display_digit_1(test3);
+  delay(1000);
+  scorelib.display_digit_1(test4);
+  delay(1000);
+  
 
 
   // for (int i=0; i<8; i++) {
