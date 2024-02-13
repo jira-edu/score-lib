@@ -19,31 +19,8 @@ bool num[10][23] = {
 void setup() {
   Serial.begin(9600);
 
-  scorelib.display_number(1, num[4]);
-  scorelib.display_number(2, num[8]);
-  // scorelib.display_digit_1(num[0]);
-  // scorelib.display_digit_2(num[0]);
-  // delay(1000);
-  // scorelib.display_digit_2(num[0]);
-  // delay(1000);
-  // scorelib.display_digit_2(num[1]);
-  // delay(1000);
-  // scorelib.display_digit_2(num[2]);
-  // delay(1000);
-  // scorelib.display_digit_2(num[3]);
-  // delay(1000);
-  // scorelib.display_digit_2(num[4]);
-  // delay(1000);
-  // scorelib.display_digit_1(num[1]);
-  // delay(1000);
-  // scorelib.display_digit_1(num[2]);
-  // delay(1000);
-  // scorelib.display_digit_1(num[3]);
-  // delay(1000);
-  // scorelib.display_digit_1(num[4]);
-  // delay(1000);
-  
-
+  scorelib.display_number(1, num[0]);
+  scorelib.display_number(2, num[3]);  
 
   // for (int i=0; i<8; i++) {
   //   digitalWrite(scorelib.q_pin[i], test_arr[i]);

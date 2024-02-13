@@ -24,9 +24,14 @@ class Scorelib {
         int seg_clk;
         int seg_data;
         int seg_latch;
+
+        int com_clk;
+        int com_data;
+        int com_latch;
+
         int select_pin[3] = {0,0,0};
         int oe_pin = 0;
-        Scorelib(int _seg_clk, int _seg_data, int _seg_latch, int _a, int _b, int _c, int _oe) {
+        Scorelib(int _seg_clk, int _seg_data, int _seg_latch, int _com_clk, int _com_data, int _com_latch, int _oe) {
             // q_pin[0] = _q1;
             // q_pin[1] = _q2;
             // q_pin[2] = _q3;
@@ -35,6 +40,7 @@ class Scorelib {
             // q_pin[5] = _q6;
             // q_pin[6] = _q7;
             // q_pin[7] = _q8;
+
             seg_clk = _seg_clk;
             seg_data = _seg_data;
             seg_latch = _seg_latch;
@@ -42,21 +48,23 @@ class Scorelib {
             pinMode(seg_data, OUTPUT);
             pinMode(seg_latch, OUTPUT);
 
-            select_pin[0] = _a;
-            select_pin[1] = _b;
-            select_pin[2] = _c;
-            oe_pin = _oe;
+            com_clk = _com_clk;
+            com_data = _com_data;
+            com_latch = _com_latch;
+            pinMode(com_clk, OUTPUT);
+            pinMode(com_data, OUTPUT);
+            pinMode(com_latch, OUTPUT);
 
-            // for (int i=0; i<8; i++) {
-            //     pinMode(q_pin[i], OUTPUT);
-            //     digitalWrite(q_pin[i], LOW);
-            // }
+            // select_pin[0] = _a;
+            // select_pin[1] = _b;
+            // select_pin[2] = _c;
             
+            // for (int i=0; i<3; i++) {
+            //     pinMode(select_pin[i], OUTPUT);
+            //     digitalWrite(select_pin[i], HIGH);
+            // }
 
-            for (int i=0; i<3; i++) {
-                pinMode(select_pin[i], OUTPUT);
-                digitalWrite(select_pin[i], HIGH);
-            }
+            oe_pin = _oe;
             pinMode(oe_pin, OUTPUT);
             digitalWrite(oe_pin, HIGH);
         }
@@ -189,46 +197,55 @@ class Scorelib {
             digitalWrite(seg_latch, HIGH);
         }
 
+        void common_out(byte com1) {
+            Serial.println(com1);
+            digitalWrite(com_latch, LOW);
+            shiftOut(com_data, com_clk, LSBFIRST, com1);
+            digitalWrite(com_latch, HIGH);
+            delay(500);
+        }
 
         void print_display(int digit) {
             
             switch (digit) {
                 case 1:
                     u1_out();
-                    digitalWrite(select_pin[0], 0);
-                    digitalWrite(select_pin[1], 0);
-                    digitalWrite(select_pin[2], 1);
+                    common_out(0b10000000);
+                    // digitalWrite(select_pin[0], 0);
+                    // digitalWrite(select_pin[1], 0);
+                    // digitalWrite(select_pin[2], 1);
                     enable_output();
-                    // delay(500);
                     u2_out();
-                    digitalWrite(select_pin[0], 1);
-                    digitalWrite(select_pin[1], 1);
-                    digitalWrite(select_pin[2], 0);                    
+                    common_out(0b01100000);
+                    // digitalWrite(select_pin[0], 1);
+                    // digitalWrite(select_pin[1], 1);
+                    // digitalWrite(select_pin[2], 0);                    
                     enable_output();
                     u3_out();
-                    // delay(500);
-                    digitalWrite(select_pin[0], 1);
-                    digitalWrite(select_pin[1], 0);
-                    digitalWrite(select_pin[2], 1);                    
+                    common_out(0b10100000);
+                    // digitalWrite(select_pin[0], 1);
+                    // digitalWrite(select_pin[1], 0);
+                    // digitalWrite(select_pin[2], 1);                    
                     enable_output();
                     break;
                 case 2:
                     u1_out();
-                    digitalWrite(select_pin[0], 1);
-                    digitalWrite(select_pin[1], 0);
-                    digitalWrite(select_pin[2], 0);
+                    common_out(0b00100000);
+                    // digitalWrite(select_pin[0], 1);
+                    // digitalWrite(select_pin[1], 0);
+                    // digitalWrite(select_pin[2], 0);
                     enable_output();
-                    // delay(500);
                     u2_out();
-                    digitalWrite(select_pin[0], 0);
-                    digitalWrite(select_pin[1], 0);
-                    digitalWrite(select_pin[2], 0);                    
+                    common_out(0b00000000);
+                    // digitalWrite(select_pin[0], 0);
+                    // digitalWrite(select_pin[1], 0);
+                    // digitalWrite(select_pin[2], 0);                    
                     enable_output();
                     u3_out();
-                    // delay(500);
-                    digitalWrite(select_pin[0], 0);
-                    digitalWrite(select_pin[1], 1);
-                    digitalWrite(select_pin[2], 0);                    
+                    common_out(0b01000000);
+                    // digitalWrite(select_pin[0], 0);
+                    // digitalWrite(select_pin[1], 1);
+                    // digitalWrite(select_pin[2], 0);                    
                     enable_output();
                     break;
                 
