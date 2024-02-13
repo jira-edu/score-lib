@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "score_lib.h"
 
-Scorelib scorelib(2,3,4,5,6,7,8,9,10,11,12,13);
+Scorelib scorelib(2,3,4,10,11,12,13);
 
 bool num[10][23] = {
   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0},  // 0
@@ -18,27 +18,30 @@ bool num[10][23] = {
 
 void setup() {
   Serial.begin(9600);
-  scorelib.display_digit_1(num[0]);
-  scorelib.display_digit_2(num[0]);
-  delay(1000);
-  scorelib.display_digit_2(num[0]);
-  delay(1000);
-  scorelib.display_digit_2(num[1]);
-  delay(1000);
-  scorelib.display_digit_2(num[2]);
-  delay(1000);
-  scorelib.display_digit_2(num[3]);
-  delay(1000);
-  scorelib.display_digit_2(num[4]);
-  delay(1000);
-  scorelib.display_digit_1(num[1]);
-  delay(1000);
-  scorelib.display_digit_1(num[2]);
-  delay(1000);
-  scorelib.display_digit_1(num[3]);
-  delay(1000);
-  scorelib.display_digit_1(num[4]);
-  delay(1000);
+
+  scorelib.display_number(1, num[4]);
+  scorelib.display_number(2, num[8]);
+  // scorelib.display_digit_1(num[0]);
+  // scorelib.display_digit_2(num[0]);
+  // delay(1000);
+  // scorelib.display_digit_2(num[0]);
+  // delay(1000);
+  // scorelib.display_digit_2(num[1]);
+  // delay(1000);
+  // scorelib.display_digit_2(num[2]);
+  // delay(1000);
+  // scorelib.display_digit_2(num[3]);
+  // delay(1000);
+  // scorelib.display_digit_2(num[4]);
+  // delay(1000);
+  // scorelib.display_digit_1(num[1]);
+  // delay(1000);
+  // scorelib.display_digit_1(num[2]);
+  // delay(1000);
+  // scorelib.display_digit_1(num[3]);
+  // delay(1000);
+  // scorelib.display_digit_1(num[4]);
+  // delay(1000);
   
 
 
