@@ -169,7 +169,7 @@ class Scorelib {
             for (int i=0; i<8; i++) {
                 buff = buff | (u1[i] << (7-i));
             }
-            Serial.println(buff, BIN);
+            // Serial.println(buff, BIN);
             digitalWrite(seg_latch, LOW);
             shiftOut(seg_data, seg_clk, LSBFIRST, buff);
             digitalWrite(seg_latch, HIGH);
@@ -180,7 +180,7 @@ class Scorelib {
             for (int i=0; i<8; i++) {
                 buff = buff | (u2[i] << (7-i));
             }
-            Serial.println(buff, BIN);
+            // Serial.println(buff, BIN);
             digitalWrite(seg_latch, LOW);
             shiftOut(seg_data, seg_clk, LSBFIRST, buff);
             digitalWrite(seg_latch, HIGH);
@@ -191,18 +191,67 @@ class Scorelib {
             for (int i=0; i<8; i++) {
                 buff = buff | (u3[i] << (7-i));
             }
-            Serial.println(buff, BIN);
+            // Serial.println(buff, BIN);
             digitalWrite(seg_latch, LOW);
             shiftOut(seg_data, seg_clk, LSBFIRST, buff);
             digitalWrite(seg_latch, HIGH);
         }
 
-        void common_out(byte com1) {
-            Serial.println(com1);
+        void common_out(byte u_no, int board_no) {
+            byte buff;
+            // Serial.println(u_no);
+            switch (u_no) {
+                case 1:
+                    buff = 0b00100000;
+                    break;
+                case 2:
+                    buff = 0b00000000;
+                    break;
+                case 3:
+                    buff = 0b01000000;
+                    break;
+                case 6:
+                    buff = 0b10000000;
+                    break;
+                case 7:
+                    buff = 0b01100000;
+                    break;
+                case 8:
+                    buff = 0b10100000;
+                    break;
+                default:
+                    buff = 0b11100000;
+                    break;
+            }
+            
+            switch (board_no) {
+                case 1:
+                    buff = buff | 0b00000111;
+                    break;
+                case 2:
+                    buff = buff | 0b00001011;
+                    break;
+                case 3:
+                    buff = buff | 0b00001101;
+                    break;
+                case 4:
+                    buff = buff | 0b00001110;
+                    break;
+                default:
+                    buff = buff | 0b00001111;
+                    break;
+            }
+            
             digitalWrite(com_latch, LOW);
-            shiftOut(com_data, com_clk, LSBFIRST, com1);
+            shiftOut(com_data, com_clk, LSBFIRST, buff);
             digitalWrite(com_latch, HIGH);
-            delay(500);
+            
+            buff = buff | 0b00001111;
+            delay(10);
+            digitalWrite(com_latch, LOW);
+            shiftOut(com_data, com_clk, LSBFIRST, buff);
+            digitalWrite(com_latch, HIGH);
+
         }
 
         void print_display(int digit) {
@@ -210,45 +259,48 @@ class Scorelib {
             switch (digit) {
                 case 1:
                     u1_out();
-                    common_out(0b10000000);
-                    // digitalWrite(select_pin[0], 0);
-                    // digitalWrite(select_pin[1], 0);
-                    // digitalWrite(select_pin[2], 1);
-                    enable_output();
+                    common_out(6, 1);
+                    // common_out(0b10000001);
+                    // enable_output();
                     u2_out();
-                    common_out(0b01100000);
-                    // digitalWrite(select_pin[0], 1);
-                    // digitalWrite(select_pin[1], 1);
-                    // digitalWrite(select_pin[2], 0);                    
-                    enable_output();
+                    common_out(7, 1);
+                    // common_out(0b01100001);                   
+                    // enable_output();
                     u3_out();
-                    common_out(0b10100000);
-                    // digitalWrite(select_pin[0], 1);
-                    // digitalWrite(select_pin[1], 0);
-                    // digitalWrite(select_pin[2], 1);                    
-                    enable_output();
+                    common_out(8, 1);
+                    // common_out(0b10100001);                  
+                    // enable_output();
                     break;
                 case 2:
                     u1_out();
-                    common_out(0b00100000);
-                    // digitalWrite(select_pin[0], 1);
-                    // digitalWrite(select_pin[1], 0);
-                    // digitalWrite(select_pin[2], 0);
-                    enable_output();
+                    common_out(1, 1);
+                    // common_out(0b00100001);
+                    // enable_output();
                     u2_out();
-                    common_out(0b00000000);
-                    // digitalWrite(select_pin[0], 0);
-                    // digitalWrite(select_pin[1], 0);
-                    // digitalWrite(select_pin[2], 0);                    
-                    enable_output();
+                    common_out(2, 1);
+                    // common_out(0b00000001);                   
+                    // enable_output();
                     u3_out();
-                    common_out(0b01000000);
-                    // digitalWrite(select_pin[0], 0);
-                    // digitalWrite(select_pin[1], 1);
-                    // digitalWrite(select_pin[2], 0);                    
-                    enable_output();
+                    common_out(3, 1);
+                    // common_out(0b01000001);                   
+                    // enable_output();
                     break;
-                
+                case 3:
+                    u1_out();
+                    common_out(6, 2);
+                    u2_out();
+                    common_out(7, 2);
+                    u3_out();
+                    common_out(8, 2);
+                    break;
+                case 4:
+                    u1_out();
+                    common_out(1, 2);
+                    u2_out();
+                    common_out(2, 2);
+                    u3_out();
+                    common_out(3, 2);
+                    break;
                 // case 2:
                 //     /* code */
                 //     break;
