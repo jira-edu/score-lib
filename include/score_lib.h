@@ -226,19 +226,22 @@ class Scorelib {
             
             switch (board_no) {
                 case 1:
-                    buff = buff | 0b00000111;
+                    buff = buff | 0b00001111;
                     break;
                 case 2:
-                    buff = buff | 0b00001011;
+                    buff = buff | 0b00010111;
                     break;
                 case 3:
-                    buff = buff | 0b00001101;
+                    buff = buff | 0b00011011;
                     break;
                 case 4:
-                    buff = buff | 0b00001110;
+                    buff = buff | 0b00011101;
+                    break;
+                case 5:
+                    buff = buff | 0b00011110;
                     break;
                 default:
-                    buff = buff | 0b00001111;
+                    buff = buff | 0b00011111;
                     break;
             }
             
