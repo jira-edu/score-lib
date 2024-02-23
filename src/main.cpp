@@ -34,36 +34,36 @@ void INT_count() {
 
 void setup() {
   Serial.begin(9600);
-  attachInterrupt(digitalPinToInterrupt(2), INT_count, RISING);
+  // attachInterrupt(digitalPinToInterrupt(2), INT_count, RISING);
 
-  scorelib.display_number(1, num[0]);
-  scorelib.display_number(2, num[1]);  
-  scorelib.display_number(3, num[2]);
-  scorelib.display_number(4, num[3]);
+  scorelib.display_number(1, num[1]);
+  scorelib.display_number(2, num[2]);  
+  scorelib.display_number(3, num[3]);
+  scorelib.display_number(4, num[4]);
   delay(1000);
 
-  for (int i=0; i<5; i++) {
-    scorelib.display_number(2, num[i]);
-    delay(1000);
-  }
+  // for (int i=0; i<5; i++) {
+  //   scorelib.display_number(2, num[i]);
+  //   delay(1000);
+  // }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  sec_buff = sec_count;
-  x_digit = 0;
-  y_digit = 0;
+  // sec_buff = sec_count;
+  // x_digit = 0;
+  // y_digit = 0;
 
-  while (sec_buff >= 10) {
-    sec_buff = sec_buff-10;
-    x_digit++;
-  } 
-  while (sec_buff >= 1) {
-    sec_buff = sec_buff-1;
-    y_digit++;
-  }
+  // while (sec_buff >= 10) {
+  //   sec_buff = sec_buff-10;
+  //   x_digit++;
+  // } 
+  // while (sec_buff >= 1) {
+  //   sec_buff = sec_buff-1;
+  //   y_digit++;
+  // }
   
-  scorelib.display_number(1, num[x_digit]);
-  scorelib.display_number(2, num[y_digit]);
-  delay(100);
+  // scorelib.display_number(1, num[x_digit]);
+  // scorelib.display_number(2, num[y_digit]);
+  // delay(100);
 }

@@ -249,7 +249,7 @@ class Scorelib {
             shiftOut(com_data, com_clk, LSBFIRST, buff);
             digitalWrite(com_latch, HIGH);
             
-            buff = buff | 0b00001111;
+            buff = buff | 0b00011111;
             delay(10);
             digitalWrite(com_latch, LOW);
             shiftOut(com_data, com_clk, LSBFIRST, buff);
