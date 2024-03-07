@@ -66,4 +66,9 @@ void loop() {
   // scorelib.display_number(1, num[x_digit]);
   // scorelib.display_number(2, num[y_digit]);
   // delay(100);
+  scorelib.display_number(1, num[1]);
+  scorelib.display_number(2, num[2]);  
+  scorelib.display_number(3, num[3]);
+  scorelib.display_number(4, num[4]);
+  delay(1000);
 }

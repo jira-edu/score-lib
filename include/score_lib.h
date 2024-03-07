@@ -304,6 +304,38 @@ class Scorelib {
                     u3_out();
                     common_out(3, 2);
                     break;
+                case 5:
+                    u1_out();
+                    common_out(6, 3);
+                    u2_out();
+                    common_out(7, 3);
+                    u3_out();
+                    common_out(8, 3);
+                    break;
+                case 6:
+                    u1_out();
+                    common_out(1, 3);
+                    u2_out();
+                    common_out(2, 3);
+                    u3_out();
+                    common_out(3, 3);
+                    break;
+                case 7:
+                    u1_out();
+                    common_out(6, 4);
+                    u2_out();
+                    common_out(7, 4);
+                    u3_out();
+                    common_out(8, 4);
+                    break;
+                case 8:
+                    u1_out();
+                    common_out(1, 4);
+                    u2_out();
+                    common_out(2, 4);
+                    u3_out();
+                    common_out(3, 4);
+                    break;
                 // case 2:
                 //     /* code */
                 //     break;
