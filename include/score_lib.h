@@ -97,62 +97,39 @@ class Scorelib {
             print_display(digit);
 
         }
-        // void display_digit_2(bool n[23]) {
-        //     block1.u2[4] = n[0]; 
-        //     block1.u2[6] = n[1];
-        //     block1.u1[4] = n[2];
-        //     block1.u1[5] = n[3];
-        //     block1.u1[7] = n[4];
-        //     block1.u1[6] = n[5];
-        //     block1.u1[0] = n[6];
-        //     block1.u1[1] = n[7];
-        //     block1.u3[6] = n[8];
-        //     block1.u3[7] = n[9];
-        //     block1.u3[0] = n[10];
-        //     block1.u3[1] = n[11];
-        //     block1.u3[2] = n[12];
-        //     block1.u3[3] = n[13];
-        //     block1.u3[5] = n[14];
-        //     block1.u3[4] = n[15];
-        //     block1.u2[0] = n[16];
-        //     block1.u2[2] = n[17];
-        //     block1.u2[3] = n[18];
-        //     block1.u2[7] = n[19];
-        //     block1.u2[1] = n[20];
-        //     block1.u1[3] = n[21];
-        //     block1.u1[2] = n[22];
-        //     print_board1();
-        // }
 
-        // void display_digit_1 (bool n[23]) {
-        //     block1.u7[4] = n[0]; 
-        //     block1.u7[6] = n[1];
-        //     block1.u6[4] = n[2];
-        //     block1.u6[5] = n[3];
-        //     block1.u6[7] = n[4];
-        //     block1.u6[6] = n[5];
-        //     block1.u6[0] = n[6];
-        //     block1.u6[1] = n[7];
-        //     block1.u8[6] = n[8];
-        //     block1.u8[7] = n[9];
-        //     block1.u8[0] = n[10];
-        //     block1.u8[1] = n[11];
-        //     block1.u8[2] = n[12];
-        //     block1.u8[3] = n[13];
-        //     block1.u8[5] = n[14];
-        //     block1.u8[4] = n[15];
-        //     block1.u7[0] = n[16];
-        //     block1.u7[2] = n[17];
-        //     block1.u7[3] = n[18];
-        //     block1.u7[7] = n[19];
-        //     block1.u7[1] = n[20];
-        //     block1.u6[3] = n[21];
-        //     block1.u6[2] = n[22];
-        //     print_board1();
-        // }
+        void display_period(bool n[34]) {
+            
+            // Column 1
+            for (int i=0; i<7; i++) {
+                u1[i] = n[i];
+            }
+            print_period(1);
+            
+            //Column 2
+            for (int i=7; i<14; i++) {
+                u1[i-7] = n[i];
+            }
+            print_period(2);
 
+            //Column 3
+            for (int i=14; i<21; i++) {
+                u1[i-14] = n[i];
+            }
+            print_period(3);
 
+            //Column 4
+            for (int i=21; i<28; i++) {
+                u1[i-21] = n[i];
+            }
+            print_period(4);
 
+            //Column 5
+            for (int i=28; i<35; i++) {
+                u1[i-28] = n[i];
+            }
+            print_period(5);
+        }
         
     private:
         bool u1[8] = {0,0,0,0,0,0,0,0};
@@ -344,6 +321,31 @@ class Scorelib {
                 default:
                     break;
             }
+        }
+
+        void print_period(int column) {
+            u1_out();
+            switch (column) {
+            case 0:
+                common_out(2, 5);
+                break;
+            case 1:
+                common_out(1, 5);
+                break;
+            case 2:
+                common_out(3, 5);
+                break;
+            case 3:
+                common_out(7, 5);
+                break;
+            case 4:
+                common_out(6, 5);
+                break;
+            default:
+                common_out(10, 10);
+                break;
+            }
+            common_out(column, 5);
         }
 
         // void print_board1(void) {
