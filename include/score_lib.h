@@ -101,33 +101,53 @@ class Scorelib {
         void display_period(bool n[34]) {
             
             // Column 1
-            for (int i=0; i<7; i++) {
-                u1[i] = n[i];
-            }
+            u1[7] = n[0];
+            u1[6] = n[1];
+            u1[0] = n[2];
+            u1[1] = n[3];
+            u1[3] = n[4];
+            u1[5] = n[5];
+            u1[4] = n[6];            
             print_period(1);
             
             //Column 2
-            for (int i=7; i<14; i++) {
-                u1[i-7] = n[i];
-            }
+            u1[7] = n[7];
+            u1[6] = n[8];
+            u1[0] = n[9];
+            u1[1] = n[10];
+            u1[3] = n[11];
+            u1[5] = n[12];
+            u1[4] = n[13];            
             print_period(2);
 
             //Column 3
-            for (int i=14; i<21; i++) {
-                u1[i-14] = n[i];
-            }
+            u1[7] = n[14];
+            u1[6] = n[15];
+            u1[0] = n[16];
+            u1[1] = n[17];
+            u1[3] = n[18];
+            u1[5] = n[19];
+            u1[4] = n[20]; 
             print_period(3);
 
             //Column 4
-            for (int i=21; i<28; i++) {
-                u1[i-21] = n[i];
-            }
+            u1[7] = n[21];
+            u1[6] = n[22];
+            u1[0] = n[23];
+            u1[1] = n[24];
+            u1[3] = n[25];
+            u1[5] = n[26];
+            u1[4] = n[27]; 
             print_period(4);
 
             //Column 5
-            for (int i=28; i<35; i++) {
-                u1[i-28] = n[i];
-            }
+            u1[7] = n[28];
+            u1[6] = n[29];
+            u1[0] = n[30];
+            u1[1] = n[31];
+            u1[3] = n[32];
+            u1[5] = n[33];
+            u1[4] = n[34]; 
             print_period(5);
         }
         
