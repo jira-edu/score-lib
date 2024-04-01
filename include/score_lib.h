@@ -366,10 +366,10 @@ class Scorelib {
                 common_out(6, 5);
                 break;
             default:
-                common_out(10, 10);
+                common_out(10, 5);
                 break;
             }
-            common_out(column, 5);
+            // common_out(column, 5);
         }
 
         // void print_board1(void) {
