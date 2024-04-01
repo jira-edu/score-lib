@@ -100,9 +100,9 @@ class Scorelib {
 
         void display_period(bool n[34]) {
 
-            for (int i=0; i<35; i++) {
-                n[i] = !n[i];
-            }
+            // for (int i=0; i<35; i++) {
+            //     n[i] = !n[i];
+            // }
             
             // Column 1
             u1[7] = n[0];
@@ -350,19 +350,19 @@ class Scorelib {
         void print_period(int column) {
             u1_out();
             switch (column) {
-            case 0:
+            case 1:
                 common_out(2, 5);
                 break;
-            case 1:
+            case 2:
                 common_out(1, 5);
                 break;
-            case 2:
+            case 3:
                 common_out(3, 5);
                 break;
-            case 3:
+            case 4:
                 common_out(7, 5);
                 break;
-            case 4:
+            case 5:
                 common_out(6, 5);
                 break;
             default:
