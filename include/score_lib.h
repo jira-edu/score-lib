@@ -100,9 +100,9 @@ class Scorelib {
 
         void display_period(bool n[34]) {
 
-            // for (int i=0; i<35; i++) {
-            //     n[i] = !n[i];
-            // }
+            for (int i=0; i<35; i++) {
+                n[i] = !n[i];
+            }
             
             // Column 1
             u1[7] = n[0];
